@@ -2,9 +2,18 @@ from inspect import Parameter
 import torch
 from torch import nn
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 # workarounds for pylance linter bug
 from torch.nn import parameter
+
+def save_model(model: nn.Module):
+    model_path = Path("saved-models")
+    model_name = "linear_regression_model.pt"
+
+    model_save_path = model_path / model_name
+    
+    torch.save(model.state_dict(), model_save_path)
 
 TRAIN_SPLIT_VAL = 0.8
 EPOCHS = 1000
