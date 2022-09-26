@@ -16,7 +16,7 @@ def save_model(model: nn.Module):
     torch.save(model.state_dict(), model_save_path)
 
 TRAIN_SPLIT_VAL = 0.8
-EPOCHS = 1000
+EPOCHS = 200
 WEIGHT = 0.7
 BIAS = 0.5
 START = 0
@@ -63,14 +63,10 @@ class TrainingCoreParams:
 class LinearRegressionModel(nn.Module):
     def __init__(self):
         super().__init__()
-        self.weight = parameter.Parameter(torch.zeros(
-            1, requires_grad=True, dtype=torch.float32))
-        self.bias = parameter.Parameter(torch.zeros(
-            1, requires_grad=True, dtype=torch.float32))
+        self.linear_layer = nn.Linear(in_features=1, out_features=1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        result = self.weight * x + self.bias
-        return result
+        return self.linear_layer(x)
 
 
 def plot_predictions(
@@ -169,7 +165,7 @@ train_results = train(training_core_params, training_options, training_data)
 print(f"Original Weight: {WEIGHT} - Bias: {BIAS}")
 # type: ignore
 print(
-    f"Predicted Weight: {train_results.model.weight.item():.3f} - Bias: {train_results.model.bias.item():.3f}") # type: ignore
+    f"Predicted Weight: {train_results.model.linear_layer.weight.item():.3f} - Bias: {train_results.model.linear_layer.bias.item():.3f}") # type: ignore
 
 plot_loss_history(
     train_results.epoch_counter,
