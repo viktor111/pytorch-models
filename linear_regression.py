@@ -16,7 +16,7 @@ def save_model(model: nn.Module):
     torch.save(model.state_dict(), model_save_path)
 
 TRAIN_SPLIT_VAL = 0.8
-EPOCHS = 200
+EPOCHS = 900
 WEIGHT = 0.7
 BIAS = 0.5
 START = 0
