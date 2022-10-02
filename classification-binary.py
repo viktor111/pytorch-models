@@ -135,7 +135,6 @@ for epoch in range(epochs):
     if epoch % 1000 == 0:
         print(f"Epoch: {epoch}, Loss: {loss.item():.5f}, Acc: {acc:.2f}%, Test Loss: {test_loss.item():.5f}, Test Acc: {test_acc:.2f}%")
 
-save_model(model);
 plt.figure(figsize=(12, 6))
 plt.subplot(1, 2, 1)
 plt.title("Training data")
@@ -144,3 +143,10 @@ plt.subplot(1, 2, 2)
 plt.title("Testing data")
 plot_decision_boundary(model, x_test, y_test)
 plt.show()
+
+
+def relu(x):
+    return torch.maximum(torch.tensor(0), x)
+
+def sigmoid(x):
+    return 1 / (1 + torch.exp(-x))
