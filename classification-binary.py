@@ -1,5 +1,4 @@
 from pathlib import Path
-from turtle import circle
 import torch
 from torch import nn
 import matplotlib.pyplot as plt
@@ -112,6 +111,7 @@ def plot_decision_boundary(model: torch.nn.Module, X: torch.Tensor, y: torch.Ten
     plt.ylim(yy.min(), yy.max())
     
 epochs = 100000
+print(y_train.shape)
 for epoch in range(epochs):
     model.train()
 
