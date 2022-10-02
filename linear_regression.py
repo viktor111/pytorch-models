@@ -124,8 +124,8 @@ def train(training_core_params: TrainingCoreParams, training_options: TrainingOp
         train_loss_history, test_loss_history, epoch_counter, training_core_params.model)
     for epoch in range(training_core_params.epochs):
         training_core_params.model.train()
-        training_options.optimizer.zero_grad()
         predictions = training_core_params.model(training_data.x_train)
+        training_options.optimizer.zero_grad()
         loss = training_options.loss_fn(
             predictions, training_data.y_train)
         loss.backward()
