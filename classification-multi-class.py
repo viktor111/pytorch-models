@@ -104,7 +104,7 @@ for epoch in range(epochs):
     if epoch % 1000 == 0:
         print(f"Epoch: {epoch} | Loss: {loss.item():.4f} | Acc: {acc:.2f}% | Test Loss: {test_loss.item():.4f} | Test Acc: {test_acc:.2f}%")
       
-save_model(model)  
+# save_model(model)  
 # --- UNCOMMENT TO USE SAVED MODEL ---
 
 # saved_model = MultiClassModel(2, 5)
